@@ -8,10 +8,13 @@ class ApiServices {
 
     api = axios.create({
         baseURL: "https://newsapi.org/v2",
-        headers: {
-            "X-Api-Key": process.env.API_KEY
-        }
     })
+        .interceptors
+        .request
+        .use((config) => {
+            config.headers["X-Api-Key"] = process.env.API_KEY
+        })
+
 
     async getGlobalLatestNews() {
         const response = await this.api.get(topHeadLines, {

@@ -1,11 +1,22 @@
-import React from "react";
+import React from "react"
+import { RxDotFilled } from "react-icons/rx"
 
-const NewsType = ({ children, props }) => {
+const NewsType = ({ children, onClick, activeCategory }) => {
   return (
-    <li {...props} className="cursor-pointer">
+    <li
+      onClick={onClick}
+      className="cursor-pointer flex items-center"
+    >
       {children}
+      <span
+        className={`text-blue-500 ${
+          activeCategory === children ? "block" : "hidden"
+        }`}
+      >
+        <RxDotFilled />
+      </span>
     </li>
-  );
-};
+  )
+}
 
-export default NewsType;
+export default NewsType

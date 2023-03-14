@@ -1,7 +1,7 @@
 const newsEndpoints = {
-    topHeadLines: "/top-headlines",
-    source: "/top-headlines/sources",
-    sourceNews: "/everything"
+  topHeadLines: "/top-headlines",
+  source: "/top-headlines/sources",
+  sourceNews: "/everything",
 }
 
-export default newsEndpoints;
+export default newsEndpoints

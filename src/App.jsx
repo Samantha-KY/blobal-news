@@ -1,12 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Header from "./components/Header"
 import Home from "./Home"
+import PublisherNews from "./PublisherNews"
 
 const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Home />,
+    },
+    {
+      path: "/news/:source",
+      element: <PublisherNews />,
     },
   ])
 

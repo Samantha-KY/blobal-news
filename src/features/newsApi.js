@@ -23,7 +23,7 @@ export const newsApi = createApi({
   endpoints: (build) => ({
     getGlobalLatestNews: build.query({
       query: () =>
-        `${topHeadLines}?pageSize=${LATEST_NEWS_MAXIMUM_RESULT_SIZE}&country=us`,
+        `${topHeadLines}?pageSize=${LATEST_NEWS_MAXIMUM_RESULT_SIZE}&language=us`,
       transformResponse: (response) => response["articles"],
     }),
 
@@ -39,11 +39,13 @@ export const newsApi = createApi({
     }),
 
     getPublishersByCategory: build.query({
-      query: (category) => `${source}?category=${category}`,
+      query: (category) =>
+        `${source}?category=${category}&language=en`,
     }),
 
     getPublisherNews: build.query({
-      query: (publisher) => `${sourceNews}?source=${publisher}`,
+      query: (publisher) =>
+        publisher ? `${sourceNews}?sources=${publisher}` : null,
     }),
   }),
 })

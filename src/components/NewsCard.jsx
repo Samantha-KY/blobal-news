@@ -19,7 +19,7 @@ const NewsCard = ({ isLastCard, news }) => {
       }`}
     >
       <img
-        src={urlToImage || "./mock-image.jpg"}
+        src={urlToImage || "../mock-image.jpg"}
         alt={title}
         className="object-cover rounded-lg h-80 w-full"
       />

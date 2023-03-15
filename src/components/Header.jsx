@@ -51,7 +51,7 @@ const Header = () => {
     <div className="sticky top-0 z-50">
       <div className="w-full px-5 xl:px-0 flex gap-10 justify-between py-7 font-medium items-center bg-white backdrop-blur-md">
         <div className="font-extrabold text-4xl xl:text-5xl bg-white">
-          NGlobal
+          <a href="/">NGlobal</a>
         </div>
         <ul className="xl:flex gap-20 text-xl hidden items-center">
           {headerMenu.map((menu) => (

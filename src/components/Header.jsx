@@ -1,12 +1,12 @@
-import { RiMenu3Line, RiSearchLine } from "react-icons/ri"
 import { BsThreeDots } from "react-icons/bs"
-import { RxCross2 } from "react-icons/rx"
 import { nanoid } from "nanoid"
 import { useEffect, useState } from "react"
 import { useGetLatestNewsByCategoryQuery } from "../features/newsApi"
 import { useDispatch } from "react-redux"
 import { setLatestNews } from "../features/news"
 import NewsTypeListItem from "./NewsTypeListItem"
+import SlideDownHeaderMenu from "./SlideDownHeaderMenu"
+import MobileMenuButton from "./MobileMenuButton"
 
 const headerMenu = [
   "general",
@@ -74,53 +74,20 @@ const Header = () => {
             <BsThreeDots />
           </li>
         </ul>
-        <div className="flex items-center gap-5">
-          <RiSearchLine className="h-6 w-6" />
-          <button
-            onClick={() =>
-              setIsAdditionalMenusOpened((prev) => !prev)
-            }
-          >
-            {isAdditionalMenusOpened ? (
-              <RxCross2 className="h-6 w-6 xl:hidden block" />
-            ) : (
-              <RiMenu3Line className="h-6 w-6 xl:hidden block" />
-            )}
-          </button>
-        </div>
+        <MobileMenuButton
+          isAdditionalMenusOpened={isAdditionalMenusOpened}
+          setIsAdditionalMenusOpened={setIsAdditionalMenusOpened}
+        />
       </div>
-      <div
-        className={`absolute top-24 -z-10 left-0 transition-all duration-500 ease-out right-0 w-full bg-white shadow-lg px-5 rounded-b-xl ${
-          isAdditionalMenusOpened
-            ? "translate-y-0"
-            : "-translate-y-[50rem]"
-        }`}
-      >
-        <div className="hidden md:grid grid-cols-1 divide-y">
-          {additionalHeaderMenu.map((menu) => (
-            <NewsTypeListItem
-              onClick={() => onSelectAddtionalHeaderMenu(menu)}
-              key={nanoid()}
-            >
-              <span className="py-5">{menu}</span>
-            </NewsTypeListItem>
-          ))}
-        </div>
-        <div className="grid md:hidden grid-cols-1 divide-y">
-          {headerMenu.concat(additionalHeaderMenu).map((menu) => (
-            <NewsTypeListItem
-              activeCategory={currentNewsCategory}
-              onClick={() => {
-                setCurrentNewsCategory(menu)
-                setIsAdditionalMenusOpened(false)
-              }}
-              key={nanoid()}
-            >
-              <span className="py-5">{menu}</span>
-            </NewsTypeListItem>
-          ))}
-        </div>
-      </div>
+      <SlideDownHeaderMenu
+        onSelectAddtionalHeaderMenu={onSelectAddtionalHeaderMenu}
+        headerMenu={headerMenu}
+        additionalHeaderMenu={additionalHeaderMenu}
+        isAdditionalMenusOpened={isAdditionalMenusOpened}
+        currentNewsCategory={currentNewsCategory}
+        setCurrentNewsCategory={setCurrentNewsCategory}
+        setIsAdditionalMenusOpened={setIsAdditionalMenusOpened}
+      />
     </div>
   )
 }

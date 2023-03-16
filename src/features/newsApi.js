@@ -10,7 +10,7 @@ import {
   createApi,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react"
-import { setPublisherNews } from "./news"
+import { setLatestNews, setPublisherNews } from "./news"
 
 const { topHeadLines, source, sourceNews } = newsEndpoints
 
@@ -34,6 +34,11 @@ export const newsApi = createApi({
       query: (category) =>
         `${topHeadLines}?pageSize=${LATEST_NEWS_MAXIMUM_RESULT_SIZE}&category=${category}&language=en`,
       transformResponse: (response) => response["articles"],
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled
+        console.log({ data })
+        dispatch(setLatestNews(data.article))
+      },
     }),
 
     getPublishers: build.query({

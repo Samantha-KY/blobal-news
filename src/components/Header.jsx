@@ -1,9 +1,7 @@
 import { BsThreeDots } from "react-icons/bs"
 import { nanoid } from "nanoid"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useGetLatestNewsByCategoryQuery } from "../features/newsApi"
-import { useDispatch } from "react-redux"
-import { setLatestNews } from "../features/news"
 import NewsTypeListItem from "./NewsTypeListItem"
 import SlideDownHeaderMenu from "./SlideDownHeaderMenu"
 import MobileMenuButton from "./MobileMenuButton"
@@ -25,20 +23,9 @@ const Header = () => {
   const [isAdditionalMenusOpened, setIsAdditionalMenusOpened] =
     useState(false)
   const [isSeachInputOpened, setIsSearchInputOpened] = useState(false)
-  const dispatch = useDispatch()
-
   const { pathname } = useLocation()
   const isRootPath = matchPath("/", pathname)
-
-  const {
-    isError,
-    isLoading,
-    data: news,
-  } = useGetLatestNewsByCategoryQuery(currentNewsCategory)
-
-  useEffect(() => {
-    if (!isLoading && !isError) dispatch(setLatestNews(news))
-  }, [dispatch, isError, isLoading, news])
+  useGetLatestNewsByCategoryQuery(currentNewsCategory)
 
   const onSelectAddtionalHeaderMenu = (menu) => {
     const removedFromHeaderMenu = headerMenu.pop()

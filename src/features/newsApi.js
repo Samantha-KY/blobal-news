@@ -46,6 +46,7 @@ export const newsApi = createApi({
     getPublisherNews: build.query({
       query: (publisher) =>
         publisher ? `${sourceNews}?sources=${publisher}` : null,
+      transformErrorResponse: (response) => response["articles"],
     }),
   }),
 })

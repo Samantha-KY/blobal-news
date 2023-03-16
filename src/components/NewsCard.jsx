@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux"
 import { setNewsToRead } from "../features/news"
-import PropTypes from "prop-types"
 
 const NewsCard = ({ isLastCard, news }) => {
   const dispatch = useDispatch()
@@ -31,11 +30,6 @@ const NewsCard = ({ isLastCard, news }) => {
       </div>
     </div>
   )
-}
-
-NewsCard.propType = {
-  isLastCard: PropTypes.bool.isRequired,
-  news: PropTypes.object,
 }
 
 export default NewsCard

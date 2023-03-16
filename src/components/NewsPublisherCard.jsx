@@ -23,5 +23,3 @@ const NewsPublisherCard = ({ publisher }) => {
 }
 
 export default NewsPublisherCard
-
-// ;("Required parameters are missing, the scope of your search is too broad. Please set any of the following required parameters and try again: q, qInTitle, sources, domains.")

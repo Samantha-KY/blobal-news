@@ -7,6 +7,8 @@ import { setLatestNews } from "../features/news"
 import NewsTypeListItem from "./NewsTypeListItem"
 import SlideDownHeaderMenu from "./SlideDownHeaderMenu"
 import MobileMenuButton from "./MobileMenuButton"
+import { matchPath, useLocation } from "react-router-dom"
+import SearchBar from "./SearchBar"
 
 const headerMenu = [
   "general",
@@ -24,6 +26,9 @@ const Header = () => {
     useState(false)
   const dispatch = useDispatch()
 
+  const { pathname } = useLocation()
+  const isRootPath = matchPath("/", pathname)
+
   const {
     isError,
     isLoading,
@@ -33,6 +38,10 @@ const Header = () => {
   useEffect(() => {
     if (!isLoading && !isError) dispatch(setLatestNews(news))
   }, [dispatch, isError, isLoading, news])
+
+  useEffect(() => {
+    console.log({ isRootPath, pathname })
+  }, [pathname])
 
   const onSelectAddtionalHeaderMenu = (menu) => {
     const removedFromHeaderMenu = headerMenu.pop()
@@ -53,31 +62,37 @@ const Header = () => {
         <div className="font-extrabold text-4xl xl:text-5xl bg-white">
           <a href="/">NGlobal</a>
         </div>
-        <ul className="xl:flex gap-20 text-xl hidden items-center">
-          {headerMenu.map((menu) => (
-            <NewsTypeListItem
-              key={nanoid()}
-              activeCategory={currentNewsCategory}
+        {isRootPath && (
+          <ul className="xl:flex gap-20 text-xl hidden items-center">
+            {headerMenu.map((menu) => (
+              <NewsTypeListItem
+                key={nanoid()}
+                activeCategory={currentNewsCategory}
+                onClick={() =>
+                  setCurrentNewsCategory(menu.toLocaleLowerCase())
+                }
+              >
+                {menu}
+              </NewsTypeListItem>
+            ))}
+            <li
+              className="cursor-pointer"
               onClick={() =>
-                setCurrentNewsCategory(menu.toLocaleLowerCase())
+                setIsAdditionalMenusOpened((prev) => !prev)
               }
             >
-              {menu}
-            </NewsTypeListItem>
-          ))}
-          <li
-            className="cursor-pointer"
-            onClick={() =>
-              setIsAdditionalMenusOpened((prev) => !prev)
-            }
-          >
-            <BsThreeDots />
-          </li>
-        </ul>
-        <MobileMenuButton
-          isAdditionalMenusOpened={isAdditionalMenusOpened}
-          setIsAdditionalMenusOpened={setIsAdditionalMenusOpened}
-        />
+              <BsThreeDots />
+            </li>
+          </ul>
+        )}
+        <div className="flex items-center gap-2">
+          <SearchBar />
+          <MobileMenuButton
+            isAdditionalMenusOpened={isAdditionalMenusOpened}
+            setIsA
+            additionalMenusOpened={setIsAdditionalMenusOpened}
+          />
+        </div>
       </div>
       <SlideDownHeaderMenu
         onSelectAddtionalHeaderMenu={onSelectAddtionalHeaderMenu}

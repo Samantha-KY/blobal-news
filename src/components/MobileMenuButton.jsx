@@ -1,4 +1,4 @@
-import { RiSearchLine, RiMenu3Line } from "react-icons/ri"
+import { RiMenu3Line } from "react-icons/ri"
 import { RxCross2 } from "react-icons/rx"
 
 const MobileMenuButton = ({
@@ -6,8 +6,7 @@ const MobileMenuButton = ({
   isAdditionalMenusOpened,
 }) => {
   return (
-    <div className="flex items-center gap-5">
-      <RiSearchLine className="h-6 w-6" />
+    <div className="flex items-center gap-5 xl:hidden">
       <button
         onClick={() => setIsAdditionalMenusOpened((prev) => !prev)}
       >

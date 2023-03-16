@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         sans: "Poppins",
       },
+      transitionProperty: {
+        width: "width",
+      },
     },
   },
   plugins: [lineClamp],

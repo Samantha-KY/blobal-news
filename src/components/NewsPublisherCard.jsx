@@ -4,12 +4,6 @@ import { useNavigate } from "react-router-dom"
 const NewsPublisherCard = ({ publisher }) => {
   const { name, description, id } = publisher
   const navigate = useNavigate()
-  // const { data, isLoading, isError, error } =
-  //   useGetPublisherNewsQuery(id)
-
-  // useEffect(() => {
-  //   console.log({ data, isLoading, isError, error })
-  // }, [data, isLoading, isError, error])
 
   return (
     <div

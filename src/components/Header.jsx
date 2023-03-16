@@ -32,7 +32,7 @@ const Header = () => {
 
   useEffect(() => {
     if (!isLoading && !isError) dispatch(setLatestNews(news))
-  }, [currentNewsCategory, dispatch, isError, isLoading, news])
+  }, [dispatch, isError, isLoading, news])
 
   const onSelectAddtionalHeaderMenu = (menu) => {
     const removedFromHeaderMenu = headerMenu.pop()

@@ -8,12 +8,13 @@ import { reducers } from "./features/news"
 import { newsApi } from "./features/newsApi"
 import { ApiProvider } from "@reduxjs/toolkit/query/react"
 
-const { latestNewsReducer, newsToReadReducer } = reducers
+const { latestNewsReducer, publisherNewsReducer } = reducers
 
 const store = configureStore({
   reducer: {
     latestNews: latestNewsReducer,
-    newsToRead: newsToReadReducer,
+    publisherNews: publisherNewsReducer,
+    // newsToRead: newsToReadReducer,
     [newsApi.reducerPath]: newsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

@@ -24,19 +24,6 @@ const Publishers = () => {
               )
           )}
         </div>
-
-        {/* <div className="grid grid-cols-1 divide-y divide-solid">
-        {Array.from(Array(10).keys()).map(() => (
-          <NewsPublisherCard
-            key={nanoid()}
-            publisher={{
-              name: "CNN news",
-              id: "cnn",
-              description: "News company",
-            }}
-          />
-        ))}
-      </div> */}
       </div>
     )
 }

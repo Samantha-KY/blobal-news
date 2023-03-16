@@ -1,5 +1,4 @@
-import { RiMenu3Line } from "react-icons/ri"
-import { RxCross2 } from "react-icons/rx"
+import { CrossIcon, MenuIcon } from "../vectors"
 
 const MobileMenuButton = ({
   setIsAdditionalMenusOpened,
@@ -11,9 +10,9 @@ const MobileMenuButton = ({
         onClick={() => setIsAdditionalMenusOpened((prev) => !prev)}
       >
         {isAdditionalMenusOpened ? (
-          <RxCross2 className="h-6 w-6 xl:hidden block" />
+          <CrossIcon className="h-6 w-6 xl:hidden block" />
         ) : (
-          <RiMenu3Line className="h-6 w-6 xl:hidden block" />
+          <MenuIcon className="h-6 w-6 xl:hidden block" />
         )}
       </button>
     </div>

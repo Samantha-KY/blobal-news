@@ -24,6 +24,7 @@ const Header = () => {
     useState("general")
   const [isAdditionalMenusOpened, setIsAdditionalMenusOpened] =
     useState(false)
+  const [isSeachInputOpened, setIsSearchInputOpened] = useState(false)
   const dispatch = useDispatch()
 
   const { pathname } = useLocation()
@@ -38,10 +39,6 @@ const Header = () => {
   useEffect(() => {
     if (!isLoading && !isError) dispatch(setLatestNews(news))
   }, [dispatch, isError, isLoading, news])
-
-  useEffect(() => {
-    console.log({ isRootPath, pathname })
-  }, [pathname])
 
   const onSelectAddtionalHeaderMenu = (menu) => {
     const removedFromHeaderMenu = headerMenu.pop()
@@ -58,11 +55,11 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 z-50">
-      <div className="w-full px-5 xl:px-0 flex gap-10 justify-between py-7 font-medium items-center bg-white backdrop-blur-md">
-        <div className="font-extrabold text-4xl xl:text-5xl bg-white">
+      <div className="w-full px-5 xl:px-0 flex gap-10 py-7 font-medium items-center bg-white backdrop-blur-md">
+        <div className="font-extrabold text-4xl xl:text-5xl bg-white w-full">
           <a href="/">NGlobal</a>
         </div>
-        {isRootPath && (
+        {isRootPath && !isAdditionalMenusOpened ? (
           <ul className="xl:flex gap-20 text-xl hidden items-center">
             {headerMenu.map((menu) => (
               <NewsTypeListItem
@@ -84,12 +81,15 @@ const Header = () => {
               <BsThreeDots />
             </li>
           </ul>
-        )}
+        ) : null}
         <div className="flex items-center gap-2">
-          <SearchBar />
+          <SearchBar
+            setIsSearchInputOpened={setIsSearchInputOpened}
+            isSeachInputOpened={isSeachInputOpened}
+          />
           <MobileMenuButton
             isAdditionalMenusOpened={isAdditionalMenusOpened}
-            setIsA
+            setIsAdditionalMenusOpened={setIsAdditionalMenusOpened}
             additionalMenusOpened={setIsAdditionalMenusOpened}
           />
         </div>

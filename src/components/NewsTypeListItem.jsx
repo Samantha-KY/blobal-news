@@ -1,11 +1,11 @@
 import React from "react"
-import { RxDotFilled } from "react-icons/rx"
+import { ThreeDotIcon } from "../vectors"
 
 const NewsType = ({ children, onClick, activeCategory }) => {
   return (
     <li
       onClick={onClick}
-      className="cursor-pointer flex items-center"
+      className="cursor-pointer flex items-center w-full"
     >
       {children}
       <span
@@ -13,7 +13,7 @@ const NewsType = ({ children, onClick, activeCategory }) => {
           activeCategory === children ? "block" : "hidden"
         }`}
       >
-        <RxDotFilled />
+        <ThreeDotIcon />
       </span>
     </li>
   )

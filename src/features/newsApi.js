@@ -3,11 +3,14 @@ import {
   API_BASE_URL,
   API_KEY,
   LATEST_NEWS_MAXIMUM_RESULT_SIZE,
+  SEARCH_RESULT_BY_PUBLISHER_MAXIMUM_SIZE,
+  SEARCH_RESULT_MAXIMUM_SIZE,
 } from "../utils/constants"
 import {
   createApi,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react"
+import { setPublisherNews } from "./news"
 
 const { topHeadLines, source, sourceNews } = newsEndpoints
 
@@ -47,6 +50,23 @@ export const newsApi = createApi({
       query: (publisher) =>
         publisher ? `${sourceNews}?sources=${publisher}` : null,
       transformErrorResponse: (response) => response["articles"],
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled
+        dispatch(setPublisherNews(data.articles))
+      },
+    }),
+
+    getNewsBySearchQuery: build.query({
+      query: (searchQuery) =>
+        searchQuery
+          ? `everything?q=${searchQuery}&pageSize=${SEARCH_RESULT_MAXIMUM_SIZE}&language=en`
+          : null,
+    }),
+
+    getNewsBySearchQueryAndSource: build.query({
+      query: (searchQuery) => {
+        return `everything?q=${searchQuery.query}&sources=${searchQuery.source}&pageSize=${SEARCH_RESULT_BY_PUBLISHER_MAXIMUM_SIZE}&language=en`
+      },
     }),
   }),
 })
@@ -57,4 +77,5 @@ export const {
   useGetPublishersQuery,
   useGetPublishersByCategoryQuery,
   useGetPublisherNewsQuery,
+  endpoints,
 } = newsApi

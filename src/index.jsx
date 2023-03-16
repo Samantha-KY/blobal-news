@@ -14,7 +14,6 @@ const store = configureStore({
   reducer: {
     latestNews: latestNewsReducer,
     publisherNews: publisherNewsReducer,
-    // newsToRead: newsToReadReducer,
     [newsApi.reducerPath]: newsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

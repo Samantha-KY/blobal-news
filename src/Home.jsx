@@ -6,10 +6,10 @@ import PageLayout from "./layout/PageLayout"
 const Home = () => {
   const latestNews = useSelector((state) => state.latestNews.value)
 
-  if (latestNews.length)
-    return (
-      <PageLayout>
-        <div className="flex flex-col xl:grid xl:grid-cols-3 gap-10">
+  return (
+    <PageLayout condition={latestNews.length !== 0}>
+      <div className="flex flex-col xl:grid xl:grid-cols-3 gap-10">
+        {latestNews.length && (
           <div
             onClick={() => (window.location.href = latestNews[0].url)}
             className="mt-5 cursor-pointer xl:mt-10 relative col-span-3 h-fit md:h-[40rem] xl:h-[50rem]"
@@ -28,26 +28,26 @@ const Home = () => {
               </div>
             </div>
           </div>
-
-          <div className="xl:col-span-2 pt-5 xl:pt-10 px-5 xl:px-0">
-            <h2 className="font-bold text-2xl">Latest news</h2>
-            <div className="grid md:grid-cols-2 gap-10">
-              {latestNews.map(
-                (news, index) =>
-                  index !== 0 && (
-                    <NewsCard
-                      key={`latest-news-${index}`}
-                      news={news}
-                      isLastCard={index === 9}
-                    />
-                  )
-              )}
-            </div>
+        )}
+        <div className="xl:col-span-2 pt-5 xl:pt-10 px-5 xl:px-0">
+          <h2 className="font-bold text-2xl">Latest news</h2>
+          <div className="grid md:grid-cols-2 gap-10">
+            {latestNews.map(
+              (news, index) =>
+                index !== 0 && (
+                  <NewsCard
+                    key={`latest-news-${index}`}
+                    news={news}
+                    isLastCard={index === 9}
+                  />
+                )
+            )}
           </div>
-          <Publishers />
         </div>
-      </PageLayout>
-    )
+        <Publishers />
+      </div>
+    </PageLayout>
+  )
 }
 
 export default Home

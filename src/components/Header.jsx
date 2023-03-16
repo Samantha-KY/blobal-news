@@ -7,6 +7,8 @@ import SlideDownHeaderMenu from "./SlideDownHeaderMenu"
 import MobileMenuButton from "./MobileMenuButton"
 import { matchPath, useLocation } from "react-router-dom"
 import SearchBar from "./SearchBar"
+import { useDispatch } from "react-redux"
+import { setLatestNews } from "../features/news"
 
 const headerMenu = [
   "general",
@@ -23,8 +25,10 @@ const Header = () => {
   const [isAdditionalMenusOpened, setIsAdditionalMenusOpened] =
     useState(false)
   const [isSeachInputOpened, setIsSearchInputOpened] = useState(false)
+  const dispatch = useDispatch()
   const { pathname } = useLocation()
   const isRootPath = matchPath("/", pathname)
+
   useGetLatestNewsByCategoryQuery(currentNewsCategory)
 
   const onSelectAddtionalHeaderMenu = (menu) => {
@@ -46,15 +50,16 @@ const Header = () => {
         <div className="font-extrabold text-4xl xl:text-5xl bg-white w-full">
           <a href="/">NGlobal</a>
         </div>
-        {isRootPath && !isAdditionalMenusOpened ? (
+        {isRootPath && !isSeachInputOpened ? (
           <ul className="xl:flex gap-20 text-xl hidden items-center">
             {headerMenu.map((menu) => (
               <NewsTypeListItem
                 key={nanoid()}
                 activeCategory={currentNewsCategory}
-                onClick={() =>
+                onClick={() => {
+                  dispatch(setLatestNews([]))
                   setCurrentNewsCategory(menu.toLocaleLowerCase())
-                }
+                }}
               >
                 {menu}
               </NewsTypeListItem>
@@ -77,7 +82,6 @@ const Header = () => {
           <MobileMenuButton
             isAdditionalMenusOpened={isAdditionalMenusOpened}
             setIsAdditionalMenusOpened={setIsAdditionalMenusOpened}
-            additionalMenusOpened={setIsAdditionalMenusOpened}
           />
         </div>
       </div>

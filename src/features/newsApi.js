@@ -36,8 +36,7 @@ export const newsApi = createApi({
       transformResponse: (response) => response["articles"],
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         const { data } = await queryFulfilled
-        console.log({ data })
-        dispatch(setLatestNews(data.article))
+        dispatch(setLatestNews(data))
       },
     }),
 

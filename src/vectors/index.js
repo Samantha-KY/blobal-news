@@ -6,3 +6,4 @@ export {
   RxCross2 as CrossIcon,
   RxDotFilled as ThreeDotIcon,
 } from "react-icons/rx"
+export { ImSpinner3 as LoadingSpinner } from "react-icons/im"

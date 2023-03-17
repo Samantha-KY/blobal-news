@@ -1,14 +1,5 @@
-// import { useDispatch } from "react-redux"
-// import { setNewsToRead } from "../features/news"
-
 const NewsCard = ({ isLastCard, news }) => {
-  // const dispatch = useDispatch()
   const { urlToImage, description, title } = news
-
-  // const onRedirectToReadNews = () => {
-  //   dispatch(setNewsToRead(news))
-  //   window.location.href = news.url
-  // }
 
   return (
     <div

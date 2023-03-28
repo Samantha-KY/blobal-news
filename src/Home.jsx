@@ -29,7 +29,7 @@ const Home = () => {
             </div>
           </div>
         )}
-        <div className="xl:col-span-2 pt-5 xl:pt-10 px-5 xl:px-0">
+        <div className="xl:col-span-2 pt-5 xl:pt-10 px-5 xl:px-0 ">
           <h2 className="font-bold text-2xl">Latest news</h2>
           <div className="grid md:grid-cols-2 gap-10">
             {latestNews.map(

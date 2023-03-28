@@ -4,7 +4,7 @@ import { LoadingSpinner } from "../vectors"
 
 const PageLayout = ({ children, condition }) => {
   return (
-    <div>
+    <>
       <Header />
       {condition ? (
         <>{children}</>
@@ -13,7 +13,7 @@ const PageLayout = ({ children, condition }) => {
           <LoadingSpinner className="h-12 w-12 animate-spin text-blue-500" />
         </div>
       )}
-    </div>
+    </>
   )
 }
 

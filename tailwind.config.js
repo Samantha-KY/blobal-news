@@ -11,6 +11,9 @@ module.exports = {
       transitionProperty: {
         width: "width",
       },
+      width: {
+        fill: "-webkit-fill-available",
+      },
     },
   },
   plugins: [lineClamp],

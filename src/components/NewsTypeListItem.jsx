@@ -9,7 +9,7 @@ const NewsType = ({ children, onClick, activeCategory }) => {
     >
       {children}
       <span
-        className={`text-blue-500 ${
+        className={`text-black ${
           activeCategory === children ? "block" : "hidden"
         }`}
       >

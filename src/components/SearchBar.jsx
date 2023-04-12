@@ -39,8 +39,8 @@ const SearchBar = ({
 
   return (
     <div className="flex gap-2 items-center">
-      <div className="bg-gray-200 p-1 shadow rounded-full">
-        <div className="bg-white rounded-full flex items-center w-fit">
+      <div className="bg-gradient-to-r bg-yellow-200 p-1 shadow rounded-full">
+        <div className="bg-gradient-to-r bg-yellow-200 rounded-full flex items-center w-fit">
           <input
             onKeyUp={(e) => (e.key === "Enter" ? onSearch() : null)}
             onChange={(e) => setSearchValue(e.target.value)}
@@ -53,7 +53,7 @@ const SearchBar = ({
             }`}
             placeholder="Search..."
           />
-          <div className="rounded-full bg-blue-500 text-white m-1 cursor-pointer hover:shadow-md transition-all font-bold">
+          <div className="rounded-full bg-black text-white m-1 cursor-pointer hover:shadow-md transition-all font-bold">
             {searchValue !== "" || !isSeachInputOpened ? (
               <button className="p-2" onClick={onSearch}>
                 <SearchIcon className="h-6 w-6" />

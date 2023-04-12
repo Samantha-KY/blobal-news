@@ -12,7 +12,7 @@ const Publishers = () => {
   if (!isLoading && !isError)
     return (
       <div className="xl:col-span-1 w-full h-screen overflow-y-scroll px-5 xl:px-0 text-black pb-10 scroll-bar">
-        <h2 className="font-bold text-2xl pb-5 pt-10 sticky top-0 bg-white">
+        <h2 className="font-bold text-2xl pb-5 pt-10 sticky top-0 bg-yellow-200">
           Publishers
         </h2>
         <div className="grid grid-cols-1 divide-y divide-solid">

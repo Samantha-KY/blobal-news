@@ -11,6 +11,6 @@
   background: white;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(59 130 246 / 1);
-  border-radius: 20px;
+  background-color: rgb(244, 246, 248);
+  border-radius: 5px;
 }

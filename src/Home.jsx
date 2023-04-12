@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <PageLayout condition={latestNews.length !== 0}>
-      <div className="flex flex-col xl:grid xl:grid-cols-3 gap-10">
+      <div className="flex flex-col xl:grid xl:grid-cols-3 gap-10 mt-20">
         {latestNews.length && (
           <div
             onClick={() => (window.location.href = latestNews[0].url)}

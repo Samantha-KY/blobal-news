@@ -4,7 +4,7 @@ const NewsCard = ({ isLastCard, news }) => {
   return (
     <div
       onClick={() => (window.location.href = news.url)}
-      className={`flex cursor-pointer flex-col mt-5 break-inside-avoid ${
+      className={`flex cursor-pointer flex-col mt-5 break-inside-avoid hover:bg-gray-100 ${
         isLastCard && "col-span-full"
       }`}
     >

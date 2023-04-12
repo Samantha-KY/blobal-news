@@ -45,10 +45,10 @@ const Header = () => {
   }
 
   return (
-    <div className="sticky top-0 z-50">
-      <div className="w-full px-5 xl:px-0 flex gap-10 py-7 font-medium items-center bg-white backdrop-blur-md">
-        <div className="font-extrabold text-4xl xl:text-5xl bg-white w-full">
-          <a href="/">NGlobal</a>
+    <div className="fixed top-0 z-50 w-fill">
+      <div className="max-w-full px-10 xl:px-0 flex gap-10 py-5 font-medium items-center bg-yellow-200 backdrop-blur-md">
+        <div className="font-extrabold text-4xl xl:text-5xl bg-yellow-200 w-full">
+          <a href="/">RNA</a>
         </div>
         {isRootPath && !isSeachInputOpened ? (
           <ul className="xl:flex gap-20 text-xl hidden items-center">

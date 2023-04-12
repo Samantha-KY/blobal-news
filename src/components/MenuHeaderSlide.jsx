@@ -1,6 +1,5 @@
 import { nanoid } from "nanoid"
-import React from "react"
-import NewsTypeListItem from "./NewsTypeListItem"
+import NewsTypeListItem from "./NewsListItem"
 
 const SlideDownHeaderMenu = ({
   onSelectAddtionalHeaderMenu,

@@ -2,8 +2,8 @@ import { BsThreeDots } from "react-icons/bs"
 import { nanoid } from "nanoid"
 import { useState } from "react"
 import { useGetLatestNewsByCategoryQuery } from "../features/newsApi"
-import NewsTypeListItem from "./NewsTypeListItem"
-import SlideDownHeaderMenu from "./SlideDownHeaderMenu"
+import NewsTypeListItem from "./NewsListItem"
+import SlideDownHeaderMenu from "./MenuHeaderSlide"
 import MobileMenuButton from "./MobileMenuButton"
 import { matchPath, useLocation } from "react-router-dom"
 import SearchBar from "./SearchBar"
@@ -45,10 +45,10 @@ const Header = () => {
   }
 
   return (
-    <div className="sticky top-0 z-50">
+    <div className="w-[1360px] fixed top-0 z-50">
       <div className="w-full px-5 xl:px-0 flex gap-10 py-7 font-medium items-center bg-white backdrop-blur-md">
         <div className="font-extrabold text-4xl xl:text-5xl bg-white w-full">
-          <a href="/">NGlobal</a>
+          <a href="/">RNA</a>
         </div>
         {isRootPath && !isSeachInputOpened ? (
           <ul className="xl:flex gap-20 text-xl hidden items-center">

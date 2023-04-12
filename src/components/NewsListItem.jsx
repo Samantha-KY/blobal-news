@@ -1,6 +1,3 @@
-import React from "react"
-import { ThreeDotIcon } from "../vectors"
-
 const NewsType = ({ children, onClick, activeCategory }) => {
   return (
     <li
@@ -9,12 +6,10 @@ const NewsType = ({ children, onClick, activeCategory }) => {
     >
       {children}
       <span
-        className={`text-blue-500 ${
+        className={`text-black ${
           activeCategory === children ? "block" : "hidden"
         }`}
-      >
-        <ThreeDotIcon />
-      </span>
+      ></span>
     </li>
   )
 }

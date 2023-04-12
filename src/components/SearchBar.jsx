@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useLocation, matchPath, useParams } from "react-router-dom"
 import { setLatestNews, setPublisherNews } from "../features/news"
@@ -39,7 +39,7 @@ const SearchBar = ({
 
   return (
     <div className="flex gap-2 items-center">
-      <div className="bg-gray-200 p-1 shadow rounded-full">
+      <div className="p-1 shadow rounded-full">
         <div className="bg-white rounded-full flex items-center w-fit">
           <input
             onKeyUp={(e) => (e.key === "Enter" ? onSearch() : null)}
@@ -53,7 +53,7 @@ const SearchBar = ({
             }`}
             placeholder="Search..."
           />
-          <div className="rounded-full bg-blue-500 text-white m-1 cursor-pointer hover:shadow-md transition-all font-bold">
+          <div className="rounded-full bg-black text-white m-1 cursor-pointer hover:shadow-md transition-all font-bold">
             {searchValue !== "" || !isSeachInputOpened ? (
               <button className="p-2" onClick={onSearch}>
                 <SearchIcon className="h-6 w-6" />

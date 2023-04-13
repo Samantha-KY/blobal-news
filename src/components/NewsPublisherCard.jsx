@@ -6,7 +6,7 @@ const NewsPublisherCard = ({ publisher }) => {
 
   return (
     <div
-      className="py-2 cursor-pointer hover:bg-gray-100"
+      className="py-2 cursor-pointer hover:bg-gray-700 hover:text-white rounded-lg px-2"
       onClick={() => navigate(`news/${id}`)}
     >
       <h2 className="font-bold">{name}</h2>

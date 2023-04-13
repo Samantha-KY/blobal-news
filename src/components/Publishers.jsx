@@ -11,9 +11,9 @@ const Publishers = () => {
 
   if (!isLoading && !isError)
     return (
-      <div className="xl:col-span-1 w-full h-screen overflow-y-scroll px-5 xl:px-0 text-black pb-10 scroll-bar">
+      <div className="xl:row-span-1 w-full h-screen overflow-y-scroll px-5 xl:px-0 text-black pb-10 scroll-bar">
         <h2 className="font-bold text-2xl pb-5 pt-10 sticky top-0 bg-white">
-          Publishers
+          Authors
         </h2>
         <div className="grid grid-cols-1 divide-y divide-solid">
           {publishers.map(
